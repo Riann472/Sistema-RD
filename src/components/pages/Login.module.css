@@ -1,0 +1,28 @@
+.form {
+    width: 20vw;
+    margin: 0 auto;
+}
+
+.container {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.form input {
+    padding: 5px 5px;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #494949;
+    margin-bottom: 20px;
+}
+
+.form label {
+    color: #494949;
+    font-size: 14px;
+    margin-bottom: 5px;
+    cursor: text;
+}
