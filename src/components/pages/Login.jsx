@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import Input from '../form/Input'
-import Button from '../form/Button'
+import Input from '../l_form/Input'
+import Button from '../l_form/Button'
 
 import styles from './Login.module.css'
 

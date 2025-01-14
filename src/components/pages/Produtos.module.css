@@ -1,0 +1,15 @@
+.produtos{
+    position: relative;
+}
+
+.options{
+    background-color: #415259;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 15vh;
+    width: 100vw;
+    padding: 0 20px;
+    top: 70vh;
+}
+

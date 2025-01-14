@@ -1,5 +1,8 @@
 {
     "users": [
         {"id": 0, "user": "Riann", "pass": "semideia2"}
+    ],
+    "produtos": [
+            
     ]
 }

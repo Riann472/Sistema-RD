@@ -1,4 +1,4 @@
-import Card from '../layout/Card'
+import Card from '../l_layout/Card'
 import Caixa from '../../assets/caixa.png'
 import Produtos from '../../assets/produtos.svg'
 import Clientes from '../../assets/clientes.png'
