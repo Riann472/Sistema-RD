@@ -1,7 +1,9 @@
+import Card from '../layout/Card'
+
 export default function Home() {
     return (
-        <div>
-            
-        </div>
+        <section>
+            <Card></Card>
+        </section>
     )
 }
