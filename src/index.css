@@ -11,3 +11,9 @@ html {
 main {
   min-height: 85vh;
 }
+
+a{
+  color: #000;
+  text-decoration: none;
+  outline: none;
+}
