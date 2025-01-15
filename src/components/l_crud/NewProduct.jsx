@@ -3,8 +3,10 @@ import Input from '../l_form/Input'
 import Button from '../l_form/Button'
 import { useState, useEffect } from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export default function NewProject({ produtos, setProdutos }) {
+    const navigate = useNavigate();
 
     let [nome, setNome] = useState('')
     let [custo, setCusto] = useState()
@@ -12,13 +14,11 @@ export default function NewProject({ produtos, setProdutos }) {
     let [gtin, setGtin] = useState()
     let [balanca, setBalanca] = useState()
 
-
-
     function cadastrar(e) {
         e.preventDefault();
         axios.post("http://localhost:3000/produtos", {
             id: String(produtos.length),
-            nome: nome, 
+            nome: nome,
             custo: parseFloat(custo),
             preco_venda: parseFloat(preco),
             gtin: parseInt(gtin),
@@ -28,6 +28,8 @@ export default function NewProject({ produtos, setProdutos }) {
         axios.get("http://localhost:3000/produtos").then(
             res => setProdutos(res.data)
         )
+        alert("Cadastrado com sucesso!")
+        navigate('../produtos')
     }
 
     return (

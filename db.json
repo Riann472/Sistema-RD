@@ -9,18 +9,10 @@
   "produtos": [
     {
       "id": "0",
-      "nome": "etste",
-      "custo": 1231,
-      "preco_venda": 123,
-      "gtin": 2323123,
-      "balanca": null
-    },
-    {
-      "id": "1",
-      "nome": "etste",
-      "custo": 1231,
-      "preco_venda": 123,
-      "gtin": 2323123,
+      "nome": "BANDEJA DE OVOS",
+      "custo": 11,
+      "preco_venda": 14.99,
+      "gtin": null,
       "balanca": null
     }
   ]
