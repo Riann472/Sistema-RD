@@ -1,8 +1,43 @@
 {
-    "users": [
-        {"id": 0, "user": "Riann", "pass": "semideia2"}
-    ],
-    "produtos": [
-            
-    ]
+  "users": [
+    {
+      "id": 0,
+      "user": "Riann",
+      "pass": "semideia2"
+    }
+  ],
+  "produtos": [
+    {
+      "id": 0,
+      "nome": "LEITE EM PÓ CCGL 200G",
+      "custo": 3.99,
+      "preco_venda": 6.99,
+      "gtin": 7898929966056,
+      "balanca": 2000790
+    },
+    {
+      "id": 1,
+      "nome": "AZEITE DE OLIVA",
+      "custo": 2.99,
+      "preco_venda": 5.99,
+      "gtin": 7898929956056,
+      "balanca": 2000490
+    },
+    {
+      "id": 2,
+      "nome": "AMIDO DE MILHO",
+      "custo": 3.99,
+      "preco_venda": 6.99,
+      "gtin": 7898939966056,
+      "balanca": 2000290
+    },
+    {
+      "id": "415e",
+      "nome": "eu querno q si foda",
+      "custo": 2908378,
+      "preco_venda": 9213781,
+      "gtin": 12847,
+      "balanca": 34
+    }
+  ]
 }

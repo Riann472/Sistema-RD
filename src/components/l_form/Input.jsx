@@ -4,7 +4,7 @@ export default function Input({ onChangeHandler, value, type, text, name, placeh
     return (
         <div className={styles.input}>
             <label htmlFor={name}>{text}</label>
-            <input type={type} name={name} id={name} value={value} onChange={onChangeHandler} placeholder={placeholder} />
+            <input type={type} name={name} id={name} value={value} onChange={(e) => onChangeHandler(e.target.value)} placeholder={placeholder} />
         </div>
     )
 }
