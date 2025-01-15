@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Navbar from './components/l_layout/Navbar'
 
@@ -7,7 +8,6 @@ import Pdv from './components/pages/Pdv'
 import Produtos from './components/pages/Produtos'
 
 import NewProduct from './components/l_crud/NewProduct'
-import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 function App() {
@@ -16,8 +16,8 @@ function App() {
   useEffect(() => {
     axios.get("http://localhost:3000/produtos").then(
       res => setProdutos(res.data)
-    ) 
-  }, [])
+    )
+  }, [produtos])
 
   return (
     <BrowserRouter>
@@ -28,9 +28,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/pdv' element={<Pdv />} />
           <Route path='/produtos' element={<Produtos produtos={produtos} setProdutos={setProdutos} />} />
-
           <Route path='/produtos/newproduct' element={<NewProduct produtos={produtos} setProdutos={setProdutos} />} />
-
         </Routes>
       </main>
     </BrowserRouter>

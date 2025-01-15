@@ -17,8 +17,8 @@ export default function NewProject({ produtos, setProdutos }) {
     function cadastrar(e) {
         e.preventDefault();
         axios.post("http://localhost:3000/produtos", {
-            id: parseInt(produtos.length),
-            nome: nome,
+            id: String(produtos.length),
+            nome: nome, 
             custo: parseFloat(custo),
             preco_venda: parseFloat(preco),
             gtin: parseInt(gtin),
