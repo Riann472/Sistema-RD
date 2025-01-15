@@ -17,7 +17,7 @@ function App() {
     axios.get("http://localhost:3000/produtos").then(
       res => setProdutos(res.data)
     )
-  }, [produtos])
+  }, [])
 
   return (
     <BrowserRouter>

@@ -15,22 +15,61 @@ export default function NewProject({ produtos, setProdutos }) {
     let [balanca, setBalanca] = useState()
 
     function cadastrar(e) {
-        e.preventDefault();
-        axios.post("http://localhost:3000/produtos", {
-            id: String(produtos.length),
-            nome: nome,
-            custo: parseFloat(custo),
-            preco_venda: parseFloat(preco),
-            gtin: parseInt(gtin),
-            balanca: parseInt(balanca)
-        }).then(res => console.log(res))
+        e.preventDefault()
+        const gtinFinal = gtin === undefined || gtin.trim() === "" ? "SEM GTIN" : gtin;
 
-        axios.get("http://localhost:3000/produtos").then(
-            res => setProdutos(res.data)
-        )
-        alert("Cadastrado com sucesso!")
-        navigate('../produtos')
+        if (gtinFinal === "SEM GTIN") {
+            // Realiza o cadastro diretamente sem verificar o servidor
+            axios.post("http://localhost:3000/produtos", {
+                id: String(produtos.length), // Calculando o id de forma simples
+                nome: nome,
+                custo: parseFloat(custo),
+                preco_venda: parseFloat(preco),
+                gtin: gtinFinal,
+                balanca: balanca
+            })
+                .then(res => {
+                    console.log("Produto cadastrado:", res.data);
+                    // Atualiza os produtos na página
+                    axios.get("http://localhost:3000/produtos")
+                        .then(res => {
+                            setProdutos(res.data); // Atualiza a lista de produtos
+                            navigate('../produtos');
+                        });
+                })
+                .catch(err => console.error("Erro ao cadastrar produto:", err));
+        } else {
+            // Se o GTIN não for "SEM GTIN", faz a verificação no servidor
+            axios.get(`http://localhost:3000/produtos?gtin=${gtinFinal}`)
+                .then(res => {
+                    if (res.data.length > 0) {
+                        alert("PRODUTO JÁ CADASTRADO");
+                    } else {
+                        // Realiza o cadastro do produto
+                        axios.post("http://localhost:3000/produtos", {
+                            id: String(produtos.length), // Calculando o id de forma simples
+                            nome: nome,
+                            custo: parseFloat(custo),
+                            preco_venda: parseFloat(preco),
+                            gtin: gtinFinal,
+                            balanca: balanca
+                        })
+                            .then(res => {
+                                console.log("Produto cadastrado:", res.data);
+                                // Atualiza os produtos na página
+                                axios.get("http://localhost:3000/produtos")
+                                    .then(res => {
+                                        setProdutos(res.data); // Atualiza a lista de produtos
+                                        navigate('../produtos');
+                                    });
+                            })
+                            .catch(err => console.error("Erro ao cadastrar produto:", err));
+                    }
+                })
+                .catch(err => console.error("Erro ao verificar GTIN:", err));
+        }
     }
+
 
     return (
         <section className={styles.newp}>

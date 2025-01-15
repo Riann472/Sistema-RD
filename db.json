@@ -6,14 +6,5 @@
       "pass": "semideia2"
     }
   ],
-  "produtos": [
-    {
-      "id": "0",
-      "nome": "BANDEJA DE OVOS",
-      "custo": 11,
-      "preco_venda": 14.99,
-      "gtin": null,
-      "balanca": null
-    }
-  ]
+  "produtos": []
 }

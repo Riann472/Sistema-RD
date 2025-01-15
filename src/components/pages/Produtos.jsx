@@ -6,11 +6,23 @@ import axios from 'axios'
 import { FaPen, FaRegTrashCan } from "react-icons/fa6";
 
 export default function Produtos({ produtos, setProdutos }) {
+
+    useEffect(() => {
+        axios.get("http://localhost:3000/produtos")
+            .then(res => setProdutos(res.data))
+            .catch(err => console.error("Erro ao buscar produtos:", err));
+    }, []);
+
     function handleEdit(produto) {
         console.log(produto)
     }
     function handleDelete(produto) {
         axios.delete(`http://localhost:3000/produtos/${produto.id}`)
+            .then(res => {
+                axios.get("http://localhost:3000/produtos")
+                    .then(res => setProdutos(res.data))
+                    .catch(err => console.log(err))
+            })
     }
     return (
         <section className={styles.produtos}>
@@ -30,7 +42,7 @@ export default function Produtos({ produtos, setProdutos }) {
                             <tr key={e.id}>
                                 <td>{e.id}</td>
                                 <td>{e.nome}</td>
-                                <td>{e.preco_venda}</td>
+                                <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(e.preco_venda)}</td>
                                 <td>{e.gtin}</td>
                                 <td><div className="opcoes">
                                     <FaPen value="teste" onClick={() => handleEdit(e)} /> <FaRegTrashCan onClick={() => handleDelete(e)} />
