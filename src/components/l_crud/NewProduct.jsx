@@ -73,7 +73,7 @@ export default function NewProject({ produtos, setProdutos }) {
 
     return (
         <section className={styles.newp}>
-            <div >
+            <div>
                 <h1>Cadastro de produto</h1>
                 <form onSubmit={cadastrar} action="#">
                     <Input onChangeHandler={setNome} type="text" text="Nome" name="nome" placeholder="Informe o nome do produto" />

@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import axios from 'axios'
+
 import Navbar from './components/l_layout/Navbar'
 
 import Login from './components/pages/Login'
@@ -8,7 +10,8 @@ import Pdv from './components/pages/Pdv'
 import Produtos from './components/pages/Produtos'
 
 import NewProduct from './components/l_crud/NewProduct'
-import axios from 'axios'
+import EditProduct from './components/l_crud/EditProduct'
+
 
 function App() {
   let [produtos, setProdutos] = useState([]);
@@ -29,6 +32,8 @@ function App() {
           <Route path='/pdv' element={<Pdv />} />
           <Route path='/produtos' element={<Produtos produtos={produtos} setProdutos={setProdutos} />} />
           <Route path='/produtos/newproduct' element={<NewProduct produtos={produtos} setProdutos={setProdutos} />} />
+          <Route path='/produtos/editproduct' element={<EditProduct />} />
+
         </Routes>
       </main>
     </BrowserRouter>

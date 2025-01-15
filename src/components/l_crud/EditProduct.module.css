@@ -1,0 +1,21 @@
+.newp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+    flex-direction: column;
+}
+
+.newp form {
+    width: 25vw;
+}
+
+
+.newp h1 {
+    text-align: center;
+}
+
+.newp button {
+    padding: 15px;
+
+}

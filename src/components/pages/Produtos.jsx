@@ -1,21 +1,25 @@
 import styles from './Produtos.module.css'
 import Button from '../l_products/Button'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import { FaPen, FaRegTrashCan } from "react-icons/fa6";
 
 export default function Produtos({ produtos, setProdutos }) {
-
     useEffect(() => {
         axios.get("http://localhost:3000/produtos")
             .then(res => setProdutos(res.data))
             .catch(err => console.error("Erro ao buscar produtos:", err));
     }, []);
 
+    const navigate = useNavigate()
+
     function handleEdit(produto) {
         console.log(produto)
+        navigate("./editproduct", { state: { produto } })
     }
+
     function handleDelete(produto) {
         axios.delete(`http://localhost:3000/produtos/${produto.id}`)
             .then(res => {
