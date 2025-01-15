@@ -3,14 +3,7 @@ import Button from '../l_products/Button'
 import { useEffect, useState } from 'react'
 
 
-export default function Produtos() {
-    let [produtos, setProdutos] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:3000/produtos")
-            .then(res => res.json())
-            .then(data => setProdutos(data))
-    }, [])
+export default function Produtos({ produtos, setProdutos }) {
 
     return (
         <section className={styles.produtos}>

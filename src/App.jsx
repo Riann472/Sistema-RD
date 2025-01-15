@@ -7,8 +7,17 @@ import Pdv from './components/pages/Pdv'
 import Produtos from './components/pages/Produtos'
 
 import NewProduct from './components/l_crud/NewProduct'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 function App() {
+  let [produtos, setProdutos] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/produtos").then(
+      res => setProdutos(res.data)
+    ) 
+  }, [])
 
   return (
     <BrowserRouter>
@@ -18,9 +27,9 @@ function App() {
           <Route path='/' element={<Login />} />
           <Route path='/home' element={<Home />} />
           <Route path='/pdv' element={<Pdv />} />
-          <Route path='/produtos' element={<Produtos />} />
+          <Route path='/produtos' element={<Produtos produtos={produtos} setProdutos={setProdutos} />} />
 
-          <Route path='/produtos/newproduct' element={<NewProduct />} />
+          <Route path='/produtos/newproduct' element={<NewProduct produtos={produtos} setProdutos={setProdutos} />} />
 
         </Routes>
       </main>

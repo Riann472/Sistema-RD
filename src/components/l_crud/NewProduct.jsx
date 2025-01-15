@@ -2,9 +2,10 @@ import styles from './NewProduct.module.css'
 import Input from '../l_form/Input'
 import Button from '../l_form/Button'
 import { useState, useEffect } from 'react';
+import axios from 'axios'
 
-export default function NewProject() {
-    let id = 0;
+export default function NewProject({ produtos, setProdutos }) {
+
     let [nome, setNome] = useState('')
     let [custo, setCusto] = useState()
     let [preco, setPreco] = useState()
@@ -15,22 +16,18 @@ export default function NewProject() {
 
     function cadastrar(e) {
         e.preventDefault();
-        console.log(id)
-        fetch("http://localhost:3000/produtos", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                nome: nome,
-                custo: parseFloat(custo),
-                preco_venda: parseFloat(preco),
-                gtin: parseInt(gtin),
-                balanca: parseInt(balanca)
-            })
-        })
-            .then(res => res.json())
-            .then(data => console.log(data))
+        axios.post("http://localhost:3000/produtos", {
+            id: parseInt(produtos.length),
+            nome: nome,
+            custo: parseFloat(custo),
+            preco_venda: parseFloat(preco),
+            gtin: parseInt(gtin),
+            balanca: parseInt(balanca)
+        }).then(res => console.log(res))
+
+        axios.get("http://localhost:3000/produtos").then(
+            res => setProdutos(res.data)
+        )
     }
 
     return (
