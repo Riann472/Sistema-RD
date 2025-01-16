@@ -19,16 +19,13 @@ export default function EditProduct() {
     function editar(e) {
         e.preventDefault()
 
-        axios.get(`http://localhost:3000/produtos/?gtin=${produto.gtin}`)
+        axios.get(`http://localhost:3000/produtos/?gtin=${gtin}`)
             .then(res => {
-                console.log(res.data[0])
-                console.log(produto)
-
-                if (res.data.id != produto.id) {
+                if (res.data.length > 0 && res.data[0].id != produto.id) {
                     alert("Código de barras ja cadastrado.")
                 } else {
                     axios.put(`http://localhost:3000/produtos/${produto.id}`, {
-                        id: e.id,
+                        id: produto.id,
                         nome: nome,
                         custo: custo,
                         preco_venda: preco,

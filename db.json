@@ -15,11 +15,11 @@
       "gtin": "123"
     },
     {
-      "nome": "qweqwe",
-      "custo": 124165,
-      "preco_venda": "23",
-      "gtin": "123132",
-      "id": "1"
+      "id": "1",
+      "nome": "teste",
+      "custo": 123,
+      "preco_venda": 123,
+      "gtin": "123456"
     }
   ]
 }
