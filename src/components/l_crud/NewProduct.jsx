@@ -16,12 +16,19 @@ export default function NewProject({ produtos, setProdutos }) {
 
     function cadastrar(e) {
         e.preventDefault()
+        const getNextId = () => {
+            if (produtos.length === 0) return 1; // Caso não existam produtos
+            const maxId = Math.max(...produtos.map(p => parseInt(p.id, 10))); // Encontra o maior ID
+            return maxId + 1;
+        };
+
         const gtinFinal = gtin === undefined || gtin.trim() === "" ? "SEM GTIN" : gtin;
+        const balancaFinal = gtin === undefined || gtin.trim() === "" ? "" : gtin;
 
         if (gtinFinal === "SEM GTIN") {
             // Realiza o cadastro diretamente sem verificar o servidor
             axios.post("http://localhost:3000/produtos", {
-                id: String(produtos.length), // Calculando o id de forma simples
+                id: String(getNextId()), // Calculando o id de forma simples
                 nome: nome,
                 custo: parseFloat(custo),
                 preco_venda: parseFloat(preco),
@@ -47,7 +54,7 @@ export default function NewProject({ produtos, setProdutos }) {
                     } else {
                         // Realiza o cadastro do produto
                         axios.post("http://localhost:3000/produtos", {
-                            id: String(produtos.length), // Calculando o id de forma simples
+                            id: String(getNextId()), // Calculando o id de forma simples
                             nome: nome,
                             custo: parseFloat(custo),
                             preco_venda: parseFloat(preco),

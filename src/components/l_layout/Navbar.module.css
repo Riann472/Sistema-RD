@@ -16,3 +16,15 @@
 .navbar ul {
     list-style: none;
 }
+
+.navbar a {
+    color: #fff;
+    background-color: rgb(0, 0, 0, 0.5);
+    padding: 15px;
+    border-radius: 5px;
+    transition: background-color .2s ease-in-out
+}
+
+.navbar a:hover {
+    background-color: rgb(0, 0, 0, 0.8);
+}

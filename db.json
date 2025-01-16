@@ -16,10 +16,17 @@
     },
     {
       "id": "1",
-      "nome": "teste",
-      "custo": 123,
-      "preco_venda": 123,
-      "gtin": "123456"
+      "nome": "qweqwe",
+      "custo": 123123,
+      "preco_venda": 123123,
+      "gtin": "123123"
+    },
+    {
+      "id": "2",
+      "nome": "qweqwe",
+      "custo": 31241,
+      "preco_venda": 323124,
+      "gtin": "2343"
     }
   ]
 }

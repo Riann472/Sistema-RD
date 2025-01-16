@@ -13,6 +13,7 @@
     position: absolute;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     height: 15vh;
     width: 100vw;
     padding: 0 20px;
@@ -34,11 +35,12 @@ td {
 }
 
 .limite th:nth-child(2),
-th:nth-child(3), th:nth-child(4) {
+th:nth-child(3),
+th:nth-child(4) {
     width: 33%;
 }
 
-td div{
+td div {
     height: 100%;
     display: flex;
     font-size: 1.4rem;
@@ -46,6 +48,21 @@ td div{
     align-items: center;
 }
 
-td div svg{
+td div svg {
     cursor: pointer;
+}
+
+.options input {
+    width: 20rem;
+
+}
+
+.inp {
+    display: flex;
+    gap: 1rem;
+}
+
+.inp label{
+    color: #fff;
+
 }

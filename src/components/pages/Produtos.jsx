@@ -1,19 +1,30 @@
-import styles from './Produtos.module.css'
-import Button from '../l_products/Button'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
+import styles from './Produtos.module.css'
+import Button from '../l_products/Button'
+import Input from '../l_form/Input'
+
+
 import { FaPen, FaRegTrashCan } from "react-icons/fa6";
 
 export default function Produtos({ produtos, setProdutos }) {
-    useEffect(() => {
-        axios.get("http://localhost:3000/produtos")
-            .then(res => setProdutos(res.data))
-            .catch(err => console.error("Erro ao buscar produtos:", err));
-    }, []);
-
     const navigate = useNavigate()
+
+    let [pesquisaNome, setPesquisaNome] = useState()
+    let [pesquisaGtin, setPesquisaGtin] = useState()
+    let [produtosPesq, setProdutoPesq] = useState([])
+
+    useEffect(() => {
+        if (pesquisaNome == "" || pesquisaNome == undefined) {
+            axios.get(`http://localhost:3000/produtos`)
+                .then(res => setProdutoPesq(res.data))
+        } else {
+            axios.get(`http://localhost:3000/produtos?nome=${pesquisaNome}`)
+                .then(res => setProdutoPesq(res.data))
+        }
+    }, [pesquisaNome]) // VOCE PAROU AQUI, TEM Q AFZER TIPO UM LIKE NO BANCO DE DADOS
 
     function handleEdit(produto) {
         console.log(produto)
@@ -28,6 +39,7 @@ export default function Produtos({ produtos, setProdutos }) {
                     .catch(err => console.log(err))
             })
     }
+
     return (
         <section className={styles.produtos}>
             <div className={styles.limite}>
@@ -42,7 +54,7 @@ export default function Produtos({ produtos, setProdutos }) {
                         </tr>
                     </thead>
                     <tbody>
-                        {produtos.map((e) => (
+                        {produtosPesq.map((e) => (
                             <tr key={e.id}>
                                 <td>{e.id}</td>
                                 <td>{e.nome}</td>
@@ -58,6 +70,11 @@ export default function Produtos({ produtos, setProdutos }) {
             </div>
             <div className={styles.options}>
                 <Button to='/produtos/newproduct' text="Cadastrar" />
+                <div className={styles.inp}>
+                    <Input onChangeHandler={setPesquisaNome} type="text" text="Nome" name="nome" placeholder="Informe o nome do produto" />
+                    <Input onChangeHandler={setPesquisaGtin} type="number" text="GTIN" name="codigo" placeholder="Informe o codigo de barras do produto" />
+                </div>
+
             </div>
         </section>
     )
