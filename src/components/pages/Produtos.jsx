@@ -46,7 +46,7 @@ export default function Produtos({ produtos, setProdutos }) {
                 })
                 .catch(err => console.error("Erro ao buscar produtos:", err));
         }
-    }, [pesquisaGtin]);
+    }, [pesquisaGtin]); 
 
     function handleEdit(produto) {
         console.log(produto)
@@ -57,7 +57,7 @@ export default function Produtos({ produtos, setProdutos }) {
         axios.delete(`http://localhost:3000/produtos/${produto.id}`)
             .then(res => {
                 axios.get("http://localhost:3000/produtos")
-                    .then(res => setProdutos(res.data))
+                    .then(res => setProdutoPesq(res.data))
                     .catch(err => console.log(err))
             })
     }
