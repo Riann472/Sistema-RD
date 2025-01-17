@@ -27,6 +27,13 @@
       "custo": 31241,
       "preco_venda": 323124,
       "gtin": "2343"
+    },
+    {
+      "id": "3",
+      "nome": "qweqwo",
+      "custo": 123,
+      "preco_venda": 123124,
+      "gtin": "124123"
     }
   ]
 }

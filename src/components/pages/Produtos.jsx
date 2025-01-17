@@ -21,10 +21,32 @@ export default function Produtos({ produtos, setProdutos }) {
             axios.get(`http://localhost:3000/produtos`)
                 .then(res => setProdutoPesq(res.data))
         } else {
-            axios.get(`http://localhost:3000/produtos?nome=${pesquisaNome}`)
-                .then(res => setProdutoPesq(res.data))
+            axios.get(`http://localhost:3000/produtos`)
+                .then(res => {
+                    const produtosFiltrados = res.data.filter((produto) => {
+                        return produto.nome.toLowerCase().startsWith(pesquisaNome.toLowerCase())
+                    })
+                    setProdutoPesq(produtosFiltrados)
+                })
         }
-    }, [pesquisaNome]) // VOCE PAROU AQUI, TEM Q AFZER TIPO UM LIKE NO BANCO DE DADOS
+    }, [pesquisaNome])
+    useEffect(() => {
+        if (pesquisaGtin === "" || pesquisaGtin === undefined) {
+            axios.get(`http://localhost:3000/produtos`)
+                .then(res => setProdutoPesq(res.data))
+                .catch(err => console.error("Erro ao buscar produtos:", err));
+        } else {
+            console.log("Pesquisando por GTIN:", pesquisaGtin);
+            axios.get(`http://localhost:3000/produtos`)
+                .then(res => {
+                    const produtosFiltrados = res.data.filter((produto) => {
+                        return produto.gtin.toLowerCase().startsWith(pesquisaGtin.toLowerCase());
+                    });
+                    setProdutoPesq(produtosFiltrados);
+                })
+                .catch(err => console.error("Erro ao buscar produtos:", err));
+        }
+    }, [pesquisaGtin]);
 
     function handleEdit(produto) {
         console.log(produto)
