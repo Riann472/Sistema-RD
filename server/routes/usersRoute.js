@@ -6,10 +6,6 @@ const auth = require("../middlewares/auth")
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-    res.json("teste")
-})
-
 router.post('/register', auth, async (req, res) => {
     if (req.data.role == "funcionario") {
         res.json({ error: "Somente donos e admins podem registrar." })
@@ -54,9 +50,9 @@ router.get('/auth', auth, async (req, res) => {
     res.json(req.data)
 })
 
-router.get('/delete', async (req, res) => {
-    await Users.drop()
-    res.json("sucesso")
-})
+// router.get('/delete', async (req, res) => {
+//     await Users.drop()
+//     res.json("sucesso")
+// })
 
 module.exports = router 

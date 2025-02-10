@@ -38,7 +38,9 @@ export default function EditProduct() {
         const balancaFinal = data.balanca === undefined || data.balanca.trim() === "" ? "" : data.balanca;
         const finalData = { ...data, gtin: gtinFinal, cod_balanca: balancaFinal }
 
-        axios.put(`http://localhost:3001/produtos/edit/${produto.id}`, finalData)
+        axios.put(`http://localhost:3001/produtos/edit/${produto.id}`, finalData, {
+            headers: { accessToken: sessionStorage.getItem('token') }
+        })
             .then(res => {
                 if (res.data.error) {
                     alert(res.data.error)

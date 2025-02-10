@@ -24,7 +24,7 @@ export default function NewProject({ produtos, setProdutos }) {
             navigate('/login')
         }
     })
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, reset, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(validationSchema)
     })
 
@@ -39,7 +39,7 @@ export default function NewProject({ produtos, setProdutos }) {
         }).then(res => {
             if (res.data.error) {
                 alert(res.data.error)
-                navigate('/produtos')
+                reset()
             } else {
                 navigate('/produtos')
             }

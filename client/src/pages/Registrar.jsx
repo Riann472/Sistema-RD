@@ -17,7 +17,7 @@ function Registrar() {
             console.log(user)
             navigate('/')
         }
-    })
+    }, [])
 
     const validationSchema = z.object({
         username: z.string().min(3, "Insira no minimo 3 caracteres").max(10, "Insira no maximo 10 caracteres"),

@@ -36,7 +36,7 @@ router.post('/newproduct', auth, async (req, res) => {
     }
 })
 
-router.put(`/edit/:id`, async (req, res) => {
+router.put(`/edit/:id`, auth, async (req, res) => {
     try {
         const produto = await Produtos.findByPk(req.params.id)
         if (!produto) {
@@ -50,7 +50,7 @@ router.put(`/edit/:id`, async (req, res) => {
     }
 })
 
-router.delete(`/delete/:id`, async (req, res) => {
+router.delete(`/delete/:id`, auth, async (req, res) => {
     try {
         await Produtos.destroy({ where: { id: req.params.id } })
         return res.json({ message: `Produto de id ${req.params.id} deletado com sucesso!` })

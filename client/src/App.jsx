@@ -39,12 +39,6 @@ function App() {
     }
   }, [])
 
-  let [produtos, setProdutos] = useState([]);
-  // useEffect(() => {
-  //   axios.get("http://localhost:3000/produtos").then(
-  //     res => setProdutos(res.data)
-  //   )
-  // }, [])
 
   return (
     <BrowserRouter>
@@ -55,8 +49,8 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/pdv' element={<Pdv />} />
-            <Route path='/produtos' element={<Produtos setProdutos={setProdutos} />} />
-            <Route path='/produtos/newproduct' element={<NewProduct produtos={produtos} setProdutos={setProdutos} />} />
+            <Route path='/produtos' element={<Produtos />} />
+            <Route path='/produtos/newproduct' element={<NewProduct />} />
             <Route path='/produtos/editproduct/:id' element={<EditProduct />} />
             <Route path='/register' element={<Registrar />} />
           </Routes>
