@@ -15,7 +15,7 @@ export default function Produtos() {
     const { user } = useContext(AuthContext)
 
     useEffect(() => {
-        if (user.role == "funcionario" || !user.logged) {
+        if (user.role == "funcionario" || !sessionStorage.getItem('token')) {
             navigate('/')
         }
     }, [])

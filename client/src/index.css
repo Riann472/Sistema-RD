@@ -23,3 +23,8 @@ a {
   flex-direction: column;
   gap: 3px;
 }
+
+.selected {
+  background-color: #007bff;
+  color: white;
+}

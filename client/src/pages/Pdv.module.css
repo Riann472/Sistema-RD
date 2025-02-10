@@ -1,0 +1,50 @@
+.pdv {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 90vh;
+    gap: 20px;
+    padding: 20px 0
+}
+
+.pdv table {
+    width: 70%;
+    border-collapse: collapse;
+}
+
+.pdv th {
+    text-align: left;
+    height: 35px;
+    width: auto !important;
+}
+
+.pdv th:first-child {
+    width: 100px !important;
+}
+
+.pdv th:nth-child(3),
+.pdv th:nth-child(4),
+.pdv th:nth-child(5) {
+    width: 150px !important;
+}
+
+
+.pdv form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pdv form input {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid;
+    outline: none;
+    border-radius: 5px;
+}
+
+.pdv div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
