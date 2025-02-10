@@ -14,10 +14,25 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    align-items: center;
     height: 15vh;
     width: 100vw;
     padding: 0 20px;
-    top: 70vh;
+    top: 75vh;
+}
+
+.options input {
+    width: 20rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid;
+}
+
+.options a {
+    width: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
 }
 
 .produtos table {
@@ -52,17 +67,14 @@ td div svg {
     cursor: pointer;
 }
 
-.options input {
-    width: 20rem;
 
-}
 
 .inp {
     display: flex;
     gap: 1rem;
 }
 
-.inp label{
+.inp label {
     color: #fff;
 
 }

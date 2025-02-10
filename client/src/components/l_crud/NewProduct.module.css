@@ -1,4 +1,4 @@
-.newp{
+.newp {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,16 +6,22 @@
     height: 75vh;
 }
 
-.newp form{
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+}
+
+.newp form {
     width: 25vw;
 }
 
 
-.newp h1{
+.newp h1 {
     text-align: center;
 }
 
-.newp button{
+.newp button {
     padding: 15px;
-    
+
 }
